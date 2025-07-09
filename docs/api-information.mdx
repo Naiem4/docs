@@ -1,0 +1,81 @@
+---
+title: Quick Overview
+description: 'Technical details and usage guide for the Willro Business API'
+---
+
+# Willro Business API Details
+
+The Willro Business API provides seamless access to reliable business data, customer reviews, and business-generated content. Willro functions much like Trustpilot, empowering businesses to integrate their reputation into third-party sites, apps, and services.
+
+Whether you’re building review widgets, business directories, or analytics tools, the Willro API delivers up-to-date information you can trust.
+
+---
+
+## Base URL
+
+All Willro API requests are made to this base URL:
+
+<Card title="Willro API Details" icon="bolt" href="https://willro.com/api">
+  This API allows you to integrate business profiles, posts, and reviews into your apps and services.<br/><br/>
+
+**Base URL:**<br/>
+`https://api.willro.com/api`
+
+{' '}
+<br />
+<br />
+
+**Authentication Header:**<br/>
+`x-api-key: willro_live_sk_95ad4a1e-48ac-4872-ae02-0d40072b60bf_6b7ec4b3af7911a65ee1c3a5ce3fe84b8c2e34136ca71030`
+
+</Card>
+
+---
+
+## Authentication
+
+All API requests require an API key sent in the request headers. Your API key identifies your application and grants access to Willro’s protected endpoints.
+
+### 🔑 How to Send Your API Key
+
+Include the following header in every request:
+
+## Example Request
+
+Here’s how to make a simple request to fetch business information:
+
+```js
+const response = await fetch(
+  'https://api.willro.com/integration/business-api/info',
+  {
+    method: 'GET',
+    headers: {
+      'x-api-key':
+        'willro_live_sk_95ad4a1e-48ac-4872-ae02-0d40072b60bf_6b7ec4b3af7911a65ee1c3a5ce3fe84b8c2e34136ca71030',
+      'Content-Type': 'application/json',
+    },
+  }
+);
+
+const data = await response.json();
+console.log(data);
+```
+
+---
+
+## Available APIs
+
+Willro’s API is organized into several powerful endpoints:
+
+<Callout type="info">
+  📘 **Note:** All API endpoints return JSON responses and support RESTful
+  operations.
+</Callout>
+
+| API                  | Endpoint                            | Description                                                  |
+| -------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| **Business Info**    | `/integration/business-api/info`    | Retrieve detailed profiles, contact info, and metadata.      |
+| **Business Posts**   | `/integration/business-api/posts`   | Fetch updates, news, and announcements with pagination.      |
+| **Customer Reviews** | `/integration/business-api/reviews` | Access customer reviews and ratings, with filters and pages. |
+
+---

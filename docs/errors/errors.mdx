@@ -1,0 +1,72 @@
+## Error Handling
+
+<AccordionGroup>
+  <Accordion title="401 Unauthorized">
+    **Cause**: Invalid or missing API key
+
+    **Solution**: Verify your API key is correct and included in the `x-api-key` header.
+
+    **Example Response:**
+
+    ```json
+    {
+      "code": 401,
+      "message": "API key is required",
+      "timestamp": "2025-07-09T15:08:09.106Z",
+      "path": "/api/v1/integration/business-api/reviews?page=1&limit=10",
+      "error": "Unauthorized"
+    }
+    ```
+
+  </Accordion>
+
+  <Accordion title="404 Not Found">
+    **Cause**: Requested page doesn't exist or no data available.
+
+    **Solution**: Check pagination details in the response to avoid requesting non-existent pages or data.
+
+  </Accordion>
+
+  <Accordion title="429 Too Many Requests">
+    **Cause**: Rate limit exceeded.
+
+    **Solution**: Implement exponential backoff and respect rate limit headers to avoid throttling.
+
+  </Accordion>
+  
+  <Accordion title="500 Internal Server Error">
+    **Cause**: Unexpected server-side error occurred.
+
+    **Solution**: Retry the request after some time. If the issue persists, contact support with request details.
+
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Customer Reviews"
+    icon="star"
+    href="/api-reference/business-reviews"
+  >
+    Access customer reviews and ratings
+  </Card>
+  <Card
+    title="Business Information"
+    icon="building"
+    href="/api-reference/business-info"
+  >
+    Get business profile data
+  </Card>
+  <Card title="Pagination Guide" icon="list" href="/examples/pagination-guide">
+    Advanced pagination techniques
+  </Card>
+  <Card
+    title="Integration Examples"
+    icon="puzzle-piece"
+    href="/examples/integration-guide"
+  >
+    Complete integration patterns
+  </Card>
+</CardGroup>

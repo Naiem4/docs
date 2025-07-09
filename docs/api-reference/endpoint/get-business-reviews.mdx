@@ -1,0 +1,59 @@
+---
+title: 'Get Business Reviews'
+openapi: 'GET /integration/business-api/reviews'
+---
+
+# Get Business Reviews
+
+Retrieve a paginated list of customer reviews for your business.
+
+<Note>
+  Use this endpoint to display customer feedback and ratings in your dashboard
+  or reports.
+</Note>
+
+---
+
+## Onboarding Guide
+
+This API lets you fetch reviews posted about your business. Results are paginated, so you can load reviews page by page.
+
+### Requirements
+
+- A valid API key passed in the `x-api-key` header
+- HTTPS requests only
+- Keep your API key secure and private
+
+---
+
+## Endpoint
+
+GET /integration/business-api/reviews
+
+**Base URL:** `https://api.willro.com`
+
+---
+
+## Authentication
+
+<ParamField header="x-api-key" type="string" required>
+  Your Willro API key. Find it in your Willro dashboard under Developer > API
+  Keys.
+</ParamField>
+
+---
+
+## Query Parameters
+
+| Name  | Type   | Required | Description                              |
+| ----- | ------ | -------- | ---------------------------------------- |
+| page  | number | No       | Page number for pagination (default: 1)  |
+| limit | number | No       | Number of reviews per page (default: 10) |
+
+---
+
+## Request Example
+
+
+
+

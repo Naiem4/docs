@@ -1,0 +1,62 @@
+{
+  "name": "Willro Business Api",
+
+  "favicon": "/vite.svg",
+  "colors": {
+    "primary": "#27AAE1",
+    "light": "#4DD0E1",
+    "dark": "#003B5C",
+    "ultraLight": "#F5F7F9"
+  },
+
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/yupsis"
+    }
+  ],
+
+  "anchors": [
+    {
+      "name": "Contact us",
+      "icon": "envelope",
+      "url": "https://willro.com"
+    }
+  ],
+  "topAnchor": {
+    "name": "Home",
+    "icon": "building"
+  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["./docs/introduction", "./docs/api-information"]
+    },
+
+    {
+      "group": "API'S",
+      "pages": [
+        "./docs/api-reference/business-info",
+        "./docs/api-reference/business-posts",
+        "./docs/api-reference/business-reviews"
+      ]
+    },
+    {
+      "group": "API EXAMPLES",
+      "pages": [
+        "./docs/api-reference/endpoint/get-business-info",
+        "./docs/api-reference/endpoint/get-business-posts",
+        "./docs/api-reference/endpoint/get-business-reviews"
+      ]
+    },
+    {
+      "group": "ERRORS",
+      "pages": ["./docs/errors/errors"]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/",
+    "twitter": "https://twitter.com/",
+    "linkedin": "https://linkedin.com/"
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Willro API",
+    "version": "1.0.0",
+    "description": "API documentation for Willro sandbox integration endpoints."
+  },
+  "servers": [
+    {
+      "url": "https://willro.sandbox.com/api"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "Use this API Key: willro_live_sk_95ad4a1e-48ac-4872-ae02-0d40072b60bf_6b7ec4b3af7911a65ee1c3a5ce3fe84b8c2e34136ca71030"
+      }
+    },
+    "schemas": {
+      "BusinessInfo": {
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "type": "string",
+            "description": "Name of the business shown publicly.",
+            "example": "Willro"
+          },
+          "website": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the business website.",
+            "example": "https://willro.com"
+          },
+          "category": {
+            "type": "string",
+            "description": "Business category describing industry or sector.",
+            "example": "Tech"
+          },
+          "averageRating": {
+            "type": "number",
+            "description": "Average user rating of the business on the platform.",
+            "example": 4
+          },
+          "totalReview": {
+            "type": "integer",
+            "description": "Total number of user reviews for the business.",
+            "example": 5
+          },
+          "googleMapUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to the business's location on Google Maps.",
+            "example": "https://www.google.com/maps"
+          },
+          "location": {
+            "type": "string",
+            "description": "Business physical location or address. May be null if not available.",
+            "example": null
+          }
+        },
+        "example": {
+          "businessName": "Willro",
+          "website": "https://willro.com",
+          "category": "Tech",
+          "averageRating": 4,
+          "totalReview": 5,
+          "googleMapUrl": "https://www.google.com/maps",
+          "location": null
+        }
+      },
+      "PostsResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "description": "URL of this resource.",
+                "example": "/api/integration/business-api/posts?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "example": 1
+              },
+              "limit": {
+                "type": "integer",
+                "example": 10
+              },
+              "totalItems": {
+                "type": "integer",
+                "example": 0
+              },
+              "totalPages": {
+                "type": "integer",
+                "example": 0
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Post object. Empty objects in the example since no posts exist yet."
+            },
+            "example": []
+          }
+        }
+      },
+      "ReviewsResponse": {
+        "type": "object",
+        "properties": {
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string",
+                "example": "/api/integration/business-api/reviews?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
+              },
+              "next": {
+                "type": "string",
+                "example": "/api/integration/business-api/reviews?expand=&limit=10&page=2&q=&sortBy=createdAt&sortType=DESC"
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "example": 1
+              },
+              "limit": {
+                "type": "integer",
+                "example": 10
+              },
+              "totalItems": {
+                "type": "integer",
+                "example": 11
+              },
+              "totalPages": {
+                "type": "integer",
+                "example": 2
+              },
+              "nextPage": {
+                "type": "integer",
+                "example": 2
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Example review object from your earlier payloads.",
+              "properties": {
+                "author": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Harry Potter"
+                    },
+                    "picture": {
+                      "type": "string",
+                      "format": "uri",
+                      "example": "https://ik.imagekit.io/willro/cartoo-character-mypic_bceB6CpKB.png?fileId=6853c81fb13a102537629e41&fileType=image"
+                    },
+                    "username": {
+                      "type": "string",
+                      "example": "harray99"
+                    }
+                  }
+                },
+                "rating": {
+                  "type": "integer",
+                  "example": 5
+                },
+                "content": {
+                  "type": "string",
+                  "example": "This is a sample feed post with images!"
+                },
+                "views": {
+                  "type": "integer",
+                  "example": 0
+                },
+                "layout": {
+                  "type": "string",
+                  "example": "CLASSIC"
+                },
+                "visibility": {
+                  "type": "string",
+                  "example": "PUBLIC"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2025-07-06T04:30:33.990Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2025-07-06T04:41:01.859Z"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "Cox's Bazar"
+                },
+                "business": {
+                  "type": "object",
+                  "properties": {
+                    "businessName": {
+                      "type": "string",
+                      "example": "Willro"
+                    },
+                    "logo": {
+                      "type": "string",
+                      "format": "uri",
+                      "example": "https://ik.imagekit.io/willro/profile-images/profile_1751472026135_download__1___v-N9seDbb.jpeg?fileId=6865579c5c7cd75eb8e2d28f&fileType=image"
+                    },
+                    "website": {
+                      "type": "string",
+                      "format": "uri",
+                      "example": "https://willro.com"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Tech"
+                    },
+                    "averageRating": {
+                      "type": "integer",
+                      "example": 4
+                    },
+                    "totalReview": {
+                      "type": "integer",
+                      "example": 5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AuthError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 401
+          },
+          "message": {
+            "type": "string",
+            "example": "API key is required"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-07-09T08:33:54.383Z"
+          },
+          "path": {
+            "type": "string",
+            "example": "/api/integration/business-api/reviews?page=1&limit=10"
+          },
+          "error": {
+            "type": "string",
+            "example": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/integration/business-api/info": {
+      "get": {
+        "summary": "Get Business Info",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Business info retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessInfo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integration/business-api/posts": {
+      "get": {
+        "summary": "Get Business Posts",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "Number of posts per page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Posts retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integration/business-api/reviews": {
+      "get": {
+        "summary": "Get Business Reviews",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            },
+            "description": "Number of reviews per page."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Page number."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reviews retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized. Missing or invalid API key.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

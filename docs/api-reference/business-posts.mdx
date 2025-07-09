@@ -1,0 +1,97 @@
+---
+title: Get Business Posts
+description: 'Fetch paginated posts data for your business via the Willro API'
+---
+
+# Get Business Posts
+
+Retrieve posts or articles published by your business, with support for pagination.
+
+<Note>
+  Use this endpoint to integrate business-related posts into your app,
+  dashboard, or website.
+</Note>
+
+---
+
+## Onboarding Guide
+
+This API allows you to fetch business posts with optional pagination controls.
+
+### Requirements
+
+- A valid **API key** passed in the `x-api-key` header
+- HTTPS requests only
+- Keep your API key safe and never expose it publicly
+
+---
+
+## Endpoint
+
+GET /integration/business-api/posts
+
+**Base URL:** `https://api.willro.com`
+
+---
+
+## Authentication
+
+<ParamField header="x-api-key" type="string" required>
+  Your Willro API key. You can find it in your Willro dashboard under Developer
+  > API Keys:
+  `willro_live_sk_95ad4a1e-48ac-4872-ae02-0d40072b60bf_6b7ec4b3af7911a65ee1c3a5ce3fe84b8c2e34136ca71030`
+</ParamField>
+
+---
+
+## Query Parameters
+
+| Name  | Type   | Required | Description                             |
+| ----- | ------ | -------- | --------------------------------------- |
+| page  | number | No       | Page number for pagination (default: 1) |
+| limit | number | No       | Number of posts per page (default: 10)  |
+
+---
+
+## Request Example
+
+<CodeGroup>
+
+```js
+const page = 1;
+const limit = 10;
+
+const response = await fetch(
+  `https://api.willro.com/integration/business-api/posts?page=${page}&limit=${limit}`,
+  {
+    method: 'GET',
+    headers: {
+      'x-api-key':
+        'willro_live_sk_95ad4a1e-48ac-4872-ae02-0d40072b60bf_6b7ec4b3af7911a65ee1c3a5ce3fe84b8c2e34136ca71030',
+      'Content-Type': 'application/json',
+    },
+  }
+);
+
+const data = await response.json();
+console.log(data);
+```
+
+</CodeGroup>
+
+## Response Example
+
+```js
+{
+  "links": {
+    "self": "/api/integration/business-api/posts?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
+  },
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "totalItems": 0,
+    "totalPages": 0
+  },
+  "data": []
+}
+```
