@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://willro.sandbox.com/api"
+      "url": "https://api.willro.com/v1/api"
     }
   ],
   "components": {
@@ -287,11 +287,6 @@
     "/integration/business-api/info": {
       "get": {
         "summary": "Get Business Info",
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "Business info retrieved.",

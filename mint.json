@@ -1,7 +1,7 @@
 {
   "name": "Willro Business Api",
-
-  "favicon": "/vite.svg",
+  "logo": "./Willro-Logo-Design-Blue.png",
+  "favicon": "/willro-logo.svg",
   "colors": {
     "primary": "#27AAE1",
     "light": "#4DD0E1",
@@ -20,7 +20,7 @@
     {
       "name": "Contact us",
       "icon": "envelope",
-      "url": "https://willro.com"
+      "url": "https://willro.com/contact"
     }
   ],
   "topAnchor": {
