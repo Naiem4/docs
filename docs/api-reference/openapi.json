@@ -160,7 +160,6 @@
             "type": "array",
             "items": {
               "type": "object",
-              "description": "Example review object from your earlier payloads.",
               "properties": {
                 "author": {
                   "type": "object",
@@ -275,6 +274,58 @@
             "example": "Unauthorized"
           }
         }
+      },
+      "NotFoundError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 404
+          },
+          "message": {
+            "type": "string",
+            "example": "Resource not found."
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-07-09T10:00:00.000Z"
+          },
+          "path": {
+            "type": "string",
+            "example": "/api/integration/business-api/info"
+          },
+          "error": {
+            "type": "string",
+            "example": "Not Found"
+          }
+        }
+      },
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 500
+          },
+          "message": {
+            "type": "string",
+            "example": "An unexpected error occurred."
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-07-09T10:01:23.456Z"
+          },
+          "path": {
+            "type": "string",
+            "example": "/api/integration/business-api/info"
+          },
+          "error": {
+            "type": "string",
+            "example": "Internal Server Error"
+          }
+        }
       }
     }
   },
@@ -304,6 +355,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -359,6 +430,26 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
           }
         }
       }
@@ -408,6 +499,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AuthError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
