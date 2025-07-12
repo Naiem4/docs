@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://api.willro.com/v1/api"
+      "url": "https://api.willro.com/api/v1"
     }
   ],
   "components": {
@@ -58,7 +58,7 @@
           "location": {
             "type": "string",
             "description": "Business physical location or address. May be null if not available.",
-            "example": null
+            "example": "Landon, UK"
           }
         },
         "example": {
@@ -68,7 +68,7 @@
           "averageRating": 4,
           "totalReview": 5,
           "googleMapUrl": "https://www.google.com/maps",
-          "location": null
+          "location": "Landon, UK"
         }
       },
       "PostsResponse": {
@@ -79,39 +79,112 @@
             "properties": {
               "self": {
                 "type": "string",
-                "description": "URL of this resource.",
-                "example": "/api/integration/business-api/posts?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
+                "example": "/api/v1/integration/business-api/posts"
               }
             }
           },
           "pagination": {
             "type": "object",
             "properties": {
-              "page": {
-                "type": "integer",
-                "example": 1
-              },
-              "limit": {
-                "type": "integer",
-                "example": 10
-              },
-              "totalItems": {
-                "type": "integer",
-                "example": 0
-              },
-              "totalPages": {
-                "type": "integer",
-                "example": 0
-              }
+              "page": { "type": "integer", "example": 1 },
+              "limit": { "type": "integer", "example": 10 },
+              "totalItems": { "type": "integer", "example": 8 },
+              "totalPages": { "type": "integer", "example": 1 }
             }
           },
           "data": {
             "type": "array",
             "items": {
               "type": "object",
-              "description": "Post object. Empty objects in the example since no posts exist yet."
+              "properties": {
+                "author": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string", "example": "Willro update" },
+                    "picture": {
+                      "type": "string",
+                      "format": "uri",
+                      "example": "https://ik.imagekit.io/willro/author.png"
+                    },
+                    "username": { "type": "string", "example": "willro.com" }
+                  }
+                },
+                "content": {
+                  "type": "string",
+                  "example": "This is a sample feed post with images and location!"
+                },
+                "views": { "type": "integer", "example": 0 },
+                "layout": { "type": "string", "example": "CLASSIC" },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2025-07-10T22:18:55.547Z"
+                },
+                "reactions": { "type": "integer", "example": 0 },
+                "topReactions": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": ["Love"]
+                },
+                "comments": { "type": "integer", "example": 0 },
+                "shares": { "type": "integer", "example": 0 },
+                "location": {
+                  "type": "string",
+                  "example": "Cox's Bazar"
+                },
+                "medias": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "68703c4f8eb295fad8dc0292"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/image1.jpg"
+                      },
+                      "thumbnailUrl": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/thumb1.jpg"
+                      },
+                      "type": { "type": "string", "example": "IMAGE" },
+                      "fileName": { "type": "string", "example": "image1.jpg" }
+                    }
+                  }
+                }
+              }
             },
-            "example": []
+            "example": [
+              {
+                "author": {
+                  "name": "Willro update",
+                  "picture": "https://ik.imagekit.io/willro/author.png",
+                  "username": "willro.com"
+                },
+                "content": "This is a sample feed post with images and location!",
+                "views": 0,
+                "layout": "CLASSIC",
+                "createdAt": "2025-07-10T22:18:55.547Z",
+                "reactions": 0,
+                "topReactions": ["LOVE"],
+                "comments": 0,
+                "shares": 0,
+                "location": "Cox's Bazar",
+                "medias": [
+                  {
+                    "id": "68703c4f8eb295fad8dc0292",
+                    "url": "https://example.com/image1.jpg",
+                    "thumbnailUrl": "https://example.com/thumb1.jpg",
+                    "type": "IMAGE",
+                    "fileName": "image1.jpg"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -123,37 +196,22 @@
             "properties": {
               "self": {
                 "type": "string",
-                "example": "/api/integration/business-api/reviews?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
+                "example": "/api/v1/integration/business-api/reviews?expand=&limit=10&page=1&q=&sortBy=createdAt&sortType=DESC"
               },
               "next": {
                 "type": "string",
-                "example": "/api/integration/business-api/reviews?expand=&limit=10&page=2&q=&sortBy=createdAt&sortType=DESC"
+                "example": "/api/v1/integration/business-api/reviews?expand=&limit=10&page=2&q=&sortBy=createdAt&sortType=DESC"
               }
             }
           },
           "pagination": {
             "type": "object",
             "properties": {
-              "page": {
-                "type": "integer",
-                "example": 1
-              },
-              "limit": {
-                "type": "integer",
-                "example": 10
-              },
-              "totalItems": {
-                "type": "integer",
-                "example": 11
-              },
-              "totalPages": {
-                "type": "integer",
-                "example": 2
-              },
-              "nextPage": {
-                "type": "integer",
-                "example": 2
-              }
+              "page": { "type": "integer", "example": 1 },
+              "limit": { "type": "integer", "example": 10 },
+              "totalItems": { "type": "integer", "example": 14 },
+              "totalPages": { "type": "integer", "example": 2 },
+              "nextPage": { "type": "integer", "example": 2 }
             }
           },
           "data": {
@@ -164,10 +222,7 @@
                 "author": {
                   "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Harry Potter"
-                    },
+                    "name": { "type": "string", "example": "Harry Potter" },
                     "picture": {
                       "type": "string",
                       "format": "uri",
@@ -179,26 +234,18 @@
                     }
                   }
                 },
-                "rating": {
-                  "type": "integer",
-                  "example": 5
+                "feeling": {
+                  "type": "string",
+                  "example": "6827253aa294064355027215"
                 },
+                "rating": { "type": "integer", "example": 5 },
                 "content": {
                   "type": "string",
-                  "example": "This is a sample feed post with images!"
+                  "example": "This is a sample feed post with images and location!"
                 },
-                "views": {
-                  "type": "integer",
-                  "example": 0
-                },
-                "layout": {
-                  "type": "string",
-                  "example": "CLASSIC"
-                },
-                "visibility": {
-                  "type": "string",
-                  "example": "PUBLIC"
-                },
+                "views": { "type": "integer", "example": 0 },
+                "layout": { "type": "string", "example": "CLASSIC" },
+                "visibility": { "type": "string", "example": "PUBLIC" },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time",
@@ -209,43 +256,105 @@
                   "format": "date-time",
                   "example": "2025-07-06T04:41:01.859Z"
                 },
-                "location": {
-                  "type": "string",
-                  "example": "Cox's Bazar"
-                },
                 "business": {
                   "type": "object",
                   "properties": {
                     "businessName": {
                       "type": "string",
-                      "example": "Willro"
+                      "example": "Willro update"
                     },
                     "logo": {
                       "type": "string",
                       "format": "uri",
-                      "example": "https://ik.imagekit.io/willro/profile-images/profile_1751472026135_download__1___v-N9seDbb.jpeg?fileId=6865579c5c7cd75eb8e2d28f&fileType=image"
+                      "example": "https://ik.imagekit.io/willro/profile-images/profile_1752056775480_alamin-blue-shirt_rzdJZMXor.jpeg?fileId=686e43c95c7cd75eb8b5ed7a&fileType=image"
                     },
                     "website": {
                       "type": "string",
                       "format": "uri",
                       "example": "https://willro.com"
                     },
-                    "category": {
-                      "type": "string",
-                      "example": "Tech"
-                    },
-                    "averageRating": {
-                      "type": "integer",
-                      "example": 4
-                    },
-                    "totalReview": {
-                      "type": "integer",
-                      "example": 5
+                    "category": { "type": "string", "example": "finance" },
+                    "averageRating": { "type": "integer", "example": 4 },
+                    "totalReview": { "type": "integer", "example": 5 }
+                  }
+                },
+                "reactions": { "type": "integer", "example": 1 },
+                "topReactions": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": ["LOVE"]
+                },
+                "comments": { "type": "integer", "example": 1 },
+                "shares": { "type": "integer", "example": 1 },
+                "location": {
+                  "type": "string",
+                  "example": "Cox's Bazar"
+                },
+                "medias": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "6869fbea6cd14e52a90a0642"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/image1.jpg"
+                      },
+                      "thumbnailUrl": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/thumb1.jpg"
+                      },
+                      "type": { "type": "string", "example": "IMAGE" },
+                      "fileName": { "type": "string", "example": "image1.jpg" }
                     }
                   }
                 }
               }
-            }
+            },
+            "example": [
+              {
+                "author": {
+                  "name": "Harry Pottesdjhgjk",
+                  "picture": "https://ik.imagekit.io/willro/cartoo-character-mypic_bceB6CpKB.png?fileId=6853c81fb13a102537629e41&fileType=image",
+                  "username": "harray99"
+                },
+                "feeling": "6827253aa294064355027215",
+                "rating": 5,
+                "content": "This is a sample feed post with images!",
+                "views": 0,
+                "layout": "CLASSIC",
+                "visibility": "PUBLIC",
+                "createdAt": "2025-07-06T04:30:33.990Z",
+                "updatedAt": "2025-07-06T04:41:01.859Z",
+                "business": {
+                  "businessName": "Willro update",
+                  "logo": "https://ik.imagekit.io/willro/profile-images/profile_1752056775480_alamin-blue-shirt_rzdJZMXor.jpeg?fileId=686e43c95c7cd75eb8b5ed7a&fileType=image",
+                  "website": "https://willro.com",
+                  "category": "finance",
+                  "averageRating": 4,
+                  "totalReview": 5
+                },
+                "reactions": 1,
+                "topReactions": ["LOVE"],
+                "comments": 1,
+                "shares": 1,
+                "location": "Cox's Bazar",
+                "medias": [
+                  {
+                    "id": "6869fbea6cd14e52a90a0642",
+                    "url": "https://example.com/image1.jpg",
+                    "thumbnailUrl": "https://example.com/thumb1.jpg",
+                    "type": "IMAGE",
+                    "fileName": "image1.jpg"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
